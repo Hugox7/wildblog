@@ -1,0 +1,28 @@
+const express = require('express');
+const app = express();
+const PORT = process.env.PORT || 3002;
+const morgan = require('morgan');
+const bodyParser = require('body-parser');
+const cors = require('cors');
+const exjwt = require('express-jwt');
+require('dotenv').load();
+
+const users =  require('./routes/users');
+
+app.use(morgan('dev'))
+
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }))
+
+app.use(cors())
+
+const jwtMW = exjwt({
+    secret: process.env.JWT_SECRET_KEY
+  });
+
+app.use('/users', users)
+
+
+
+
+app.listen(PORT, () => console.log(`Server is listening on ${PORT}`));
