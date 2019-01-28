@@ -94,7 +94,7 @@ router.delete('/delete/:id', (req, res) => {
 });
 
 
-// Login
+// Login users
 router.post('/login', (req, res) => {
     let { username, password } = req.body
     connection.query('SELECT idusers, username, password FROM users WHERE username = ?', username, (err, results) => {
