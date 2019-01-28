@@ -18,9 +18,6 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 app.use(cors())
 
-const jwtMW = exjwt({
-    secret: process.env.JWT_SECRET_KEY
-  });
 
 app.use('/users', users)
 app.use('/comments', comments)
@@ -30,3 +27,5 @@ app.use('/comments', comments)
 
 
 app.listen(PORT, () => console.log(`Server is listening on ${PORT}`));
+
+
