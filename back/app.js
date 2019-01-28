@@ -8,6 +8,8 @@ const exjwt = require('express-jwt');
 require('dotenv').load();
 
 const users =  require('./routes/users');
+const comments = require('./routes/comments');
+
 
 app.use(morgan('dev'))
 
@@ -21,6 +23,8 @@ const jwtMW = exjwt({
   });
 
 app.use('/users', users)
+app.use('/comments', comments)
+
 
 
 
